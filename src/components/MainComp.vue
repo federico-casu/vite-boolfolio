@@ -62,9 +62,9 @@ export default {
                     <button class="page-link" :class="currentPageProp == 1 ? 'disabled' : ''" @click="$emit('getProjects', currentPageProp - 1)">Previous</button>
                 </li>
                 
-                <!-- <li v-for="(element, index) in lastPageProp" class="page-item">
+                <li v-for="(element, index) in lastPageProp" class="page-item">
                     <button class="page-link" @click="$emit('getProjects', element)">{{ element }}</button>
-                </li> -->
+                </li>
                 
                 <li class="page-item">
                     <button class="page-link" :class="currentPageProp == lastPageProp ? 'disabled' : ''" @click="$emit('getProjects', currentPageProp + 1)">Next</button>
