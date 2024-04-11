@@ -1,53 +1,41 @@
 <script>
-  import axios from 'axios';
-  import MainComp from './components/MainComp.vue';
+  // import axios from 'axios';
+  // import MainComp from './components/MainComp.vue';
+  import AppHeader from './components/AppHeader.vue';
+  // import { store } from './store'
 
   export default {
     components: {
-      MainComp
+      // MainComp
+      AppHeader
     },
     data() {
       return {
-        projects: [],
-        currentPage: '',
-        lastPage: ''
+        // store
       }
     },
     methods: {
-      getProjects(postApiPage) {
-        axios
-          .get('http://127.0.0.1:8000/api/projects', 
-            {
-              params: {
-                page: postApiPage
-              }
-            }
-          )
-          .then( res => {
-
-            this.currentPage = res.data.projects.current_page;
-            this.lastPage = res.data.projects.last_page;
-
-            this.projects = res.data.projects.data;
-
-            console.log(this.currentPage, this.lastPage, this.projects)
-          } )
-      }
-    },
-    mounted() {
-      this.getProjects(1);
+      
     }
   }
 
 </script>
 
 <template>
-  <MainComp 
+  <!-- <MainComp 
   :projectsProp="this.projects"
   :currentPageProp="this.currentPage"
   :lastPageProp="this.lastPage"
   @getProjects="getProjects"
-  />
+  /> -->
+
+  <AppHeader />
+
+  <router-view>
+
+  </router-view>
+
+
 </template>
 
 <style scoped>

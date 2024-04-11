@@ -2,6 +2,7 @@
 
 import ProjectCard from './ProjectCard.vue';
 import axios from 'axios';
+import { store } from '../store'
 
 // Js componente
 export default {
@@ -9,7 +10,7 @@ export default {
     components: {
         ProjectCard
     },
-    props: [ 'projectsProp', 'currentPageProp', 'lastPageProp' ],
+    // props: [ 'projectsProp', 'currentPageProp', 'lastPageProp' ],
     // {
     //     projectsProp: Array,
     //     currentPageProp: Number,
@@ -17,7 +18,7 @@ export default {
     // },
     data() {
         return {
-            
+            store
         }
     },
     methods: {
@@ -54,20 +55,20 @@ export default {
         >{{ project.title }}</li>
     </ul> -->
     <div class="container d-flex flex-wrap">
-        <ProjectCard v-for="(project, index) in this.projectsProp" :key="project.id" :projectProp="project" />
+        <ProjectCard v-for="(project, index) in this.store.projects" :key="project.id" :projectProp="project" />
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
-                    <button class="page-link" :class="currentPageProp == 1 ? 'disabled' : ''" @click="$emit('getProjects', currentPageProp - 1)">Previous</button>
+                    <button class="page-link" :class="this.store.currentPage == 1 ? 'disabled' : ''" @click="$emit('getProjects', this.store.currentPage - 1)">Previous</button>
                 </li>
                 
-                <li v-for="(element, index) in lastPageProp" class="page-item">
+                <li v-for="(element, index) in this.store.lastPage" class="page-item">
                     <button class="page-link" @click="$emit('getProjects', element)">{{ element }}</button>
                 </li>
                 
                 <li class="page-item">
-                    <button class="page-link" :class="currentPageProp == lastPageProp ? 'disabled' : ''" @click="$emit('getProjects', currentPageProp + 1)">Next</button>
+                    <button class="page-link" :class="this.store.currentPage == this.store.lastPage ? 'disabled' : ''" @click="$emit('getProjects', this.store.currentPage + 1)">Next</button>
                 </li>
             </ul>
         </nav>
