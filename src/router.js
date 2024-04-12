@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.vue'
 import ProjectList from './pages/ProjectList.vue'
 import SingleProject from './pages/SingleProject.vue'
 import NotFound from './pages/NotFound.vue'
+import ContactMe from './pages/ContactMe.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,6 +23,11 @@ const router = createRouter({
             path: '/portfolio/:repo_name',
             name: 'single-project',
             component: SingleProject
+        },
+        {
+            path: '/contact-me',
+            name: 'contact-me',
+            component: ContactMe
         },
         {
             path: '/:pathMatch(.*)*',

@@ -46,6 +46,11 @@
                             Portfolio
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'contact-me' }" class="nav-link">
+                            Contact Me
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
